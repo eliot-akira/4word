@@ -731,6 +731,8 @@ final class WP_Screen {
 	 */
 	public function render_screen_meta() {
 
+    return;
+
 		/**
 		 * Filters the legacy contextual help list.
 		 *

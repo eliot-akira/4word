@@ -28,7 +28,7 @@ function create_initial_post_types() {
 			'_edit_link'            => 'post.php?post=%d', /* internal use only. don't use this when registering your own post type. */
 			'capability_type'       => 'post',
 			'map_meta_cap'          => true,
-			'menu_position'         => 5,
+			'menu_position'         => 20,
 			'hierarchical'          => false,
 			'rewrite'               => false,
 			'query_var'             => false,
@@ -51,12 +51,12 @@ function create_initial_post_types() {
 			'_edit_link'            => 'post.php?post=%d', /* internal use only. don't use this when registering your own post type. */
 			'capability_type'       => 'page',
 			'map_meta_cap'          => true,
-			'menu_position'         => 20,
+			'menu_position'         => 5,
 			'hierarchical'          => true,
 			'rewrite'               => false,
 			'query_var'             => false,
 			'delete_with_user'      => true,
-			'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes', 'custom-fields', 'comments', 'revisions' ),
+    'supports'              => array( 'title', 'editor', 'author', 'thumbnail', /*'page-attributes', 'custom-fields', 'comments', 'revisions'*/ ),
 			'show_in_rest'          => true,
 			'rest_base'             => 'pages',
 			'rest_controller_class' => 'WP_REST_Posts_Controller',

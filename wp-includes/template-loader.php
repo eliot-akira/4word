@@ -45,7 +45,7 @@ elseif ( is_trackback() ) :
 endif;
 
 if ( defined( 'WP_USE_THEMES' ) && WP_USE_THEMES ) :
-	$template = false;
+	/*$template = false;
 	if ( is_embed() && $template = get_embed_template() ) :
 	elseif ( is_404() && $template = get_404_template() ) :
 	elseif ( is_search() && $template = get_search_template() ) :
@@ -65,7 +65,8 @@ if ( defined( 'WP_USE_THEMES' ) && WP_USE_THEMES ) :
 	elseif ( is_archive() && $template = get_archive_template() ) :
 	else :
 		$template = get_index_template();
-	endif;
+	endif;*/
+	$template = get_index_template();
 	/**
 	 * Filters the path of the current template before including it.
 	 *

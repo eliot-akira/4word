@@ -769,7 +769,7 @@ $_old_files = array(
 global $_new_bundled_files;
 
 $_new_bundled_files = array(
-	'plugins/akismet/'        => '2.0',
+	/*'plugins/akismet/'        => '2.0',
 	'themes/twentyten/'       => '3.0',
 	'themes/twentyeleven/'    => '3.2',
 	'themes/twentytwelve/'    => '3.5',
@@ -777,7 +777,7 @@ $_new_bundled_files = array(
 	'themes/twentyfourteen/'  => '3.8',
 	'themes/twentyfifteen/'   => '4.1',
 	'themes/twentysixteen/'   => '4.4',
-	'themes/twentyseventeen/' => '4.7',
+	'themes/twentyseventeen/' => '4.7',*/
 );
 
 /**
@@ -916,7 +916,7 @@ function update_core( $from, $to ) {
 
 	// Don't copy wp-content, we'll deal with that below
 	// We also copy version.php last so failed updates report their old version
-	$skip              = array( 'wp-content', 'wp-includes/version.php' );
+	$skip              = array( 'content', 'wp-includes/version.php' );
 	$check_is_writable = array();
 
 	// Check to see which files don't really need updating - only available for 3.7 and higher
@@ -930,7 +930,7 @@ function update_core( $from, $to ) {
 		}
 		if ( is_array( $checksums ) ) {
 			foreach ( $checksums as $file => $checksum ) {
-				if ( 'wp-content' == substr( $file, 0, 10 ) ) {
+				if ( 'content' == substr( $file, 0, 7 ) ) {
 					continue;
 				}
 				if ( ! file_exists( ABSPATH . $file ) ) {
@@ -999,11 +999,11 @@ function update_core( $from, $to ) {
 	}
 
 	// Check to make sure everything copied correctly, ignoring the contents of wp-content
-	$skip   = array( 'wp-content' );
+	$skip   = array( 'content' );
 	$failed = array();
 	if ( isset( $checksums ) && is_array( $checksums ) ) {
 		foreach ( $checksums as $file => $checksum ) {
-			if ( 'wp-content' == substr( $file, 0, 10 ) ) {
+			if ( 'content' == substr( $file, 0, 7 ) ) {
 				continue;
 			}
 			if ( ! file_exists( $working_dir_local . $file ) ) {
@@ -1045,7 +1045,7 @@ function update_core( $from, $to ) {
 
 	// Custom Content Directory needs updating now.
 	// Copy Languages
-	if ( ! is_wp_error( $result ) && $wp_filesystem->is_dir( $from . $distro . 'wp-content/languages' ) ) {
+	if ( ! is_wp_error( $result ) && $wp_filesystem->is_dir( $from . $distro . 'content/languages' ) ) {
 		if ( WP_LANG_DIR != ABSPATH . WPINC . '/languages' || @is_dir( WP_LANG_DIR ) ) {
 			$lang_dir = WP_LANG_DIR;
 		} else {
@@ -1060,7 +1060,7 @@ function update_core( $from, $to ) {
 		if ( @is_dir( $lang_dir ) ) {
 			$wp_lang_dir = $wp_filesystem->find_folder( $lang_dir );
 			if ( $wp_lang_dir ) {
-				$result = copy_dir( $from . $distro . 'wp-content/languages/', $wp_lang_dir );
+				$result = copy_dir( $from . $distro . 'content/languages/', $wp_lang_dir );
 				if ( is_wp_error( $result ) ) {
 					$result = new WP_Error( $result->get_error_code() . '_languages', $result->get_error_message(), substr( $result->get_error_data(), strlen( $wp_lang_dir ) ) );
 				}
@@ -1091,7 +1091,7 @@ function update_core( $from, $to ) {
 				list($type, $filename) = explode( '/', $file, 2 );
 
 				// Check to see if the bundled items exist before attempting to copy them
-				if ( ! $wp_filesystem->exists( $from . $distro . 'wp-content/' . $file ) ) {
+				if ( ! $wp_filesystem->exists( $from . $distro . 'content/' . $file ) ) {
 					continue;
 				}
 
@@ -1108,7 +1108,7 @@ function update_core( $from, $to ) {
 						continue;
 					}
 
-					if ( ! $wp_filesystem->copy( $from . $distro . 'wp-content/' . $file, $dest . $filename, FS_CHMOD_FILE ) ) {
+					if ( ! $wp_filesystem->copy( $from . $distro . 'content/' . $file, $dest . $filename, FS_CHMOD_FILE ) ) {
 						$result = new WP_Error( "copy_failed_for_new_bundled_$type", __( 'Could not copy file.' ), $dest . $filename );
 					}
 				} else {
@@ -1117,7 +1117,7 @@ function update_core( $from, $to ) {
 					}
 
 					$wp_filesystem->mkdir( $dest . $filename, FS_CHMOD_DIR );
-					$_result = copy_dir( $from . $distro . 'wp-content/' . $file, $dest . $filename );
+					$_result = copy_dir( $from . $distro . 'content/' . $file, $dest . $filename );
 
 					// If a error occurs partway through this final step, keep the error flowing through, but keep process going.
 					if ( is_wp_error( $_result ) ) {

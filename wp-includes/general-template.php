@@ -2925,6 +2925,9 @@ function wp_site_icon() {
  * @since 4.6.0
  */
 function wp_resource_hints() {
+
+  return;
+
 	$hints = array(
 		'dns-prefetch' => wp_dependencies_unique_hosts(),
 		'preconnect'   => array(),

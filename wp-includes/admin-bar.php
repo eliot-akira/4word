@@ -1127,6 +1127,9 @@ function show_admin_bar( $show ) {
  * @return bool Whether the admin bar should be showing.
  */
 function is_admin_bar_showing() {
+
+  return false;
+
 	global $show_admin_bar, $pagenow;
 
 	// For all these types of requests, we never want an admin bar.

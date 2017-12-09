@@ -20,14 +20,14 @@ global $hook_suffix;
 <div class="clear"></div></div><!-- wpbody-content -->
 <div class="clear"></div></div><!-- wpbody -->
 <div class="clear"></div></div><!-- wpcontent -->
-
+<?php /*
 <div id="wpfooter" role="contentinfo">
 	<?php
 	/**
 	 * Fires after the opening tag for the admin footer.
 	 *
 	 * @since 2.5.0
-	 */
+	 * /
 	do_action( 'in_admin_footer' );
 	?>
 	<p id="footer-left" class="alignleft">
@@ -39,7 +39,7 @@ global $hook_suffix;
 		 * @since 2.8.0
 		 *
 		 * @param string $text The content that will be printed.
-		 */
+		 * /
 		echo apply_filters( 'admin_footer_text', '<span id="footer-thankyou">' . $text . '</span>' );
 		?>
 	</p>
@@ -56,13 +56,13 @@ global $hook_suffix;
 		 * @see core_update_footer()
 		 *
 		 * @param string $content The content that will be printed.
-		 */
+		 * /
 		echo apply_filters( 'update_footer', '' );
 		?>
 	</p>
 	<div class="clear"></div>
 </div>
-<?php
+<?php */
 /**
  * Prints scripts or data before the default footer scripts.
  *

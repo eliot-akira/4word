@@ -87,6 +87,14 @@ function wp_initial_constants() {
 		define( 'WP_CACHE', false );
 	}
 
+	if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+		define( 'DISALLOW_FILE_EDIT', true );
+	}
+
+	if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
+		define( 'WP_AUTO_UPDATE_CORE', false );
+	}
+
 	// Add define('SCRIPT_DEBUG', true); to wp-config.php to enable loading of non-minified,
 	// non-concatenated scripts and stylesheets.
 	if ( ! defined( 'SCRIPT_DEBUG' ) ) {
@@ -392,7 +400,7 @@ function wp_templating_constants() {
 	 * @see WP_Theme::get_core_default_theme()
 	 */
 	if ( ! defined( 'WP_DEFAULT_THEME' ) ) {
-		define( 'WP_DEFAULT_THEME', 'twentyseventeen' );
+		define( 'WP_DEFAULT_THEME', 'charm-theme' );
 	}
 
 }

@@ -8,6 +8,8 @@
  * @package WordPress
  */
 
+define('WP4WORD', true);
+
 /**
  * Stores the location of the WordPress directory of functions, classes, and core content.
  *
@@ -220,8 +222,9 @@ require( ABSPATH . WPINC . '/class-wp-widget-factory.php' );
 require( ABSPATH . WPINC . '/nav-menu.php' );
 require( ABSPATH . WPINC . '/nav-menu-template.php' );
 require( ABSPATH . WPINC . '/admin-bar.php' );
+
 require( ABSPATH . WPINC . '/rest-api.php' );
-require( ABSPATH . WPINC . '/rest-api/class-wp-rest-server.php' );
+/*require( ABSPATH . WPINC . '/rest-api/class-wp-rest-server.php' );
 require( ABSPATH . WPINC . '/rest-api/class-wp-rest-response.php' );
 require( ABSPATH . WPINC . '/rest-api/class-wp-rest-request.php' );
 require( ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-controller.php' );
@@ -240,7 +243,7 @@ require( ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-comment-meta-fields.p
 require( ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-post-meta-fields.php' );
 require( ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-term-meta-fields.php' );
 require( ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-user-meta-fields.php' );
-
+*/
 $GLOBALS['wp_embed'] = new WP_Embed();
 
 // Load multisite-specific files.

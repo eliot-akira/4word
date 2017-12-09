@@ -23,7 +23,7 @@ function wp_dashboard_setup() {
 	$screen                         = get_current_screen();
 
 	/* Register Widgets and Controls */
-
+/*
 	$response = wp_check_browser_version();
 
 	if ( $response && $response['upgrade'] ) {
@@ -57,7 +57,7 @@ function wp_dashboard_setup() {
 
 	// WordPress Events and News
 	wp_add_dashboard_widget( 'dashboard_primary', __( 'WordPress Events and News' ), 'wp_dashboard_events_news' );
-
+*/
 	if ( is_network_admin() ) {
 
 		/**

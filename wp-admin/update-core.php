@@ -56,9 +56,15 @@ function list_core_update( $update ) {
 	$mysql_version = $wpdb->db_version();
 	$show_buttons  = true;
 	if ( 'development' == $update->response ) {
+
+    return;
+
 		$message = __( 'You are using a development version of WordPress. You can update to the latest nightly build automatically:' );
 	} else {
 		if ( $current ) {
+
+      return;
+
 			$message     = sprintf( __( 'If you need to re-install version %s, you can do so here:' ), $version_string );
 			$submit      = __( 'Re-install Now' );
 			$form_action = 'update-core.php?action=do-core-reinstall';
@@ -174,7 +180,7 @@ function core_upgrade_preamble() {
 	if ( ! isset( $updates[0]->response ) || 'latest' == $updates[0]->response ) {
 		echo '<h2>';
 		_e( 'You have the latest version of WordPress.' );
-
+/*
 		if ( wp_http_supports( array( 'ssl' ) ) ) {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 			$upgrader            = new WP_Automatic_Updater;
@@ -189,15 +195,17 @@ function core_upgrade_preamble() {
 				echo ' ' . __( 'Future security updates will be applied automatically.' );
 			}
 		}
-		echo '</h2>';
+*/		echo '</h2>';
 	} else {
-		echo '<div class="notice notice-warning"><p>';
-		_e( '<strong>Important:</strong> before updating, please <a href="https://codex.wordpress.org/WordPress_Backups">back up your database and files</a>. For help with updates, visit the <a href="https://codex.wordpress.org/Updating_WordPress">Updating WordPress</a> Codex page.' );
+		echo '<div class=""><p>'; //notice notice-warning
+//		_e( '<strong>Important:</strong> before updating, please <a href="https://codex.wordpress.org/WordPress_Backups">back up your database and files</a>. For help with updates, visit the <a href="https://codex.wordpress.org/Updating_WordPress">Updating WordPress</a> Codex page.' );
+    _e( 'It is recommended to <a href="'.admin_url('admin.php?page=duplicator').'"><b>make a backup</b></a> before updating.');
 		echo '</p></div>';
-
+/*
 		echo '<h2 class="response">';
 		_e( 'An updated version of WordPress is available.' );
 		echo '</h2>';
+*/
 	}
 
 	if ( isset( $updates[0] ) && $updates[0]->response == 'development' ) {
@@ -211,19 +219,21 @@ function core_upgrade_preamble() {
 	}
 
 	echo '<ul class="core-updates">';
+
 	foreach ( (array) $updates as $update ) {
 		echo '<li>';
 		list_core_update( $update );
 		echo '</li>';
 	}
 	echo '</ul>';
-	// Don't show the maintenance mode notice when we are only showing a single re-install option.
+/*	// Don't show the maintenance mode notice when we are only showing a single re-install option.
 	if ( $updates && ( count( $updates ) > 1 || $updates[0]->response != 'latest' ) ) {
 		echo '<p>' . __( 'While your site is being updated, it will be in maintenance mode. As soon as your updates are complete, your site will return to normal.' ) . '</p>';
 	} elseif ( ! $updates ) {
 		list( $normalized_version ) = explode( '-', $wp_version );
 		echo '<p>' . sprintf( __( '<a href="%1$s">Learn more about WordPress %2$s</a>.' ), esc_url( self_admin_url( 'about.php' ) ), $normalized_version ) . '</p>';
 	}
+*/
 	dismissed_updates();
 }
 
@@ -628,7 +638,7 @@ if ( 'upgrade-core' == $action ) {
 	require_once( ABSPATH . 'wp-admin/admin-header.php' );
 	?>
 	<div class="wrap">
-	<h1><?php _e( 'WordPress Updates' ); ?></h1>
+	<h1><?php _e( 'Updates' ); ?></h1>
 	<?php
 	if ( $upgrade_error ) {
 		echo '<div class="error"><p>';

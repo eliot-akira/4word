@@ -5296,6 +5296,7 @@ img.emoji {
  * @staticvar bool $printed
  */
 function print_emoji_detection_script() {
+  return;
 	static $printed = false;
 
 	if ( $printed ) {
