@@ -161,7 +161,7 @@ function create_initial_post_types() {
 			),
 		)
 	);
-
+/*
 	register_post_type(
 		'customize_changeset', array(
 			'labels'           => array(
@@ -181,7 +181,7 @@ function create_initial_post_types() {
 			),
 			'public'           => false,
 			'_builtin'         => true, /* internal use only. don't use this when registering your own post type. */
-			'map_meta_cap'     => true,
+/*			'map_meta_cap'     => true,
 			'hierarchical'     => false,
 			'rewrite'          => false,
 			'query_var'        => false,
@@ -208,7 +208,7 @@ function create_initial_post_types() {
 			),
 		)
 	);
-
+*/
 	register_post_type(
 		'oembed_cache', array(
 			'labels'           => array(

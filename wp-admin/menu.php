@@ -99,7 +99,7 @@ $types   = (array) get_post_types(
 		'show_in_menu' => true,
 	)
 );
-$builtin = array( /*'post',*/ 'page' );
+$builtin = array( 'post', 'page' );
 foreach ( array_merge( $builtin, $types ) as $ptype ) {
 	$ptype_obj = get_post_type_object( $ptype );
 	// Check if it should be a submenu.
