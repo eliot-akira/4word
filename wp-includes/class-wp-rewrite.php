@@ -1515,12 +1515,18 @@ class WP_Rewrite {
 			$rules .= 'RewriteRule ^' . $match . ' ' . $home_root . $query . " [QSA,L]\n";
 		}
 
+    // wp-admin -> admin, wp-login -> login
+		$admin_rules = "RewriteRule ^login$ wp-login.php [QSA,L]\n" .
+			"RewriteRule ^admin$ admin/ [L,R=301]\n" .
+			"RewriteRule ^admin/(.*)$ wp-admin/$1 [QSA,L]\n";
+
 		if ( $this->use_verbose_rules ) {
 			$this->matches = '';
 			$rewrite       = $this->rewrite_rules();
 			$num_rules     = count( $rewrite );
 			$rules        .= "RewriteCond %{REQUEST_FILENAME} -f [OR]\n" .
 				"RewriteCond %{REQUEST_FILENAME} -d\n" .
+        $admin_rules.
 				"RewriteRule ^.*$ - [S=$num_rules]\n";
 
 			foreach ( (array) $rewrite as $match => $query ) {
@@ -1536,6 +1542,7 @@ class WP_Rewrite {
 		} else {
 			$rules .= "RewriteCond %{REQUEST_FILENAME} !-f\n" .
 				"RewriteCond %{REQUEST_FILENAME} !-d\n" .
+        $admin_rules.
 				"RewriteRule . {$home_root}{$this->index} [L]\n";
 		}
 
