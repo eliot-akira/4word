@@ -251,10 +251,12 @@ if ( ! IS_PROFILE_PAGE ) {
 <input type="hidden" name="from" value="profile" />
 <input type="hidden" name="checkuser_id" value="<?php echo get_current_user_id(); ?>" />
 </p>
-
+<?php /*
 <h2><?php _e( 'Personal Options' ); ?></h2>
-
+*/ ?>
 <table class="form-table">
+
+<?php /*
 <?php if ( ! ( IS_PROFILE_PAGE && ! $user_can_edit ) ) : ?>
 	<tr class="user-rich-editing-wrap">
 		<th scope="row"><?php _e( 'Visual Editor' ); ?></th>
@@ -297,7 +299,7 @@ $show_syntax_highlighting_preference = (
 	 *
 	 * @param int $user_id The user ID.
 	 */
-	do_action( 'admin_color_scheme_picker', $user_id );
+/*	do_action( 'admin_color_scheme_picker', $user_id );
 ?>
 </td>
 </tr>
@@ -320,7 +322,7 @@ if ( ! ( IS_PROFILE_PAGE && ! $user_can_edit ) ) :
 </td>
 </tr>
 
-<?php
+<?php */
 $languages = get_available_languages();
 if ( $languages ) :
 ?>
@@ -382,9 +384,9 @@ if ( IS_PROFILE_PAGE ) {
 	do_action( 'profile_personal_options', $profileuser );
 }
 ?>
-
+<?php /*
 <h2><?php _e( 'Name' ); ?></h2>
-
+*/ ?>
 <table class="form-table">
 	<tr class="user-user-login-wrap">
 		<th><label for="user_login"><?php _e( 'Username' ); ?></label></th>
