@@ -1524,9 +1524,9 @@ class WP_Rewrite {
 			$this->matches = '';
 			$rewrite       = $this->rewrite_rules();
 			$num_rules     = count( $rewrite );
-			$rules        .= "RewriteCond %{REQUEST_FILENAME} -f [OR]\n" .
+			$rules        .= $admin_rules.
+        "RewriteCond %{REQUEST_FILENAME} -f [OR]\n" .
 				"RewriteCond %{REQUEST_FILENAME} -d\n" .
-        $admin_rules.
 				"RewriteRule ^.*$ - [S=$num_rules]\n";
 
 			foreach ( (array) $rewrite as $match => $query ) {
@@ -1540,9 +1540,9 @@ class WP_Rewrite {
 				}
 			}
 		} else {
-			$rules .= "RewriteCond %{REQUEST_FILENAME} !-f\n" .
+			$rules .= $admin_rules.
+        "RewriteCond %{REQUEST_FILENAME} !-f\n" .
 				"RewriteCond %{REQUEST_FILENAME} !-d\n" .
-        $admin_rules.
 				"RewriteRule . {$home_root}{$this->index} [L]\n";
 		}
 
